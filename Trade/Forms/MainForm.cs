@@ -52,9 +52,19 @@ namespace Trade.Forms
                     bsInventTable.Add(inventTable);
 
                     dgvInventTable.ClearSelection();
-                    dgvInventTable.Rows[dgvInventTable.Rows.Count - 1].Selected = true;
+
+                    var rowToSelect = dgvInventTable.Rows[dgvInventTable.Rows.Count - 1];
+
+                    rowToSelect.Selected = true;
+                    this.dgvInventTable.CurrentCell = rowToSelect.Cells[0];
+                    this.dgvInventTable.BeginEdit(true);
+
                 }
             };
+
+            
+
+            
 
             frm.ShowDialog();
         }
@@ -96,10 +106,17 @@ namespace Trade.Forms
                 bsInventTable.Remove(inventTable);
                 TradeContext.inventTables.Remove(inventTable);
 
-                if (dgvInventTable.Rows.Count > 1)
+                if (dgvInventTable.Rows.Count >= 1)
                 {
                     dgvInventTable.ClearSelection();
-                    dgvInventTable.Rows[dgvInventTable.Rows.Count - 1].Selected = true;
+
+                    var rowToSelect = dgvInventTable.Rows[dgvInventTable.Rows.Count - 1];
+
+                    rowToSelect.Selected = true;
+                    this.dgvInventTable.CurrentCell = rowToSelect.Cells[0];
+                    this.dgvInventTable.BeginEdit(true);
+
+                    
                 }
             }
         }

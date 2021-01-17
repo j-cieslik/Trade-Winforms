@@ -103,9 +103,12 @@ namespace Trade.Helpers
                                         .Where(x => x.Id == item.Id)
                                         .FirstOrDefault();
 
-                    itemToModify.Name = item.Name;
+                    if (itemToModify != null)
+                    {
+                        itemToModify.Name = item.Name;
 
-                    sbuilder.Append($"Zmodyfikowano obiekt o nazwie: {item.Name} " + "\n");
+                        sbuilder.Append($"Zmodyfikowano obiekt o nazwie: {item.Name} " + "\n");
+                    }     
                 }
 
                 sbuilder.Append($"Łącznie zmodyfikowano: {modifyObjects.Count} " + "\n");

@@ -17,23 +17,27 @@ namespace Trade.Data
             {
                 new InventTable()
                 {
-                    Id = "1",
-                    Name = "Biurko"
+                    Id = "aaaa",
+                    Name = "Biurko",
+                    ModifiedDate = new DateTime(2014, 9, 4)
                 },
                 new InventTable()
                 {
-                    Id = "2",
-                    Name = "Szafa"
+                    Id = "bbbb",
+                    Name = "Szafa",
+                    ModifiedDate = new DateTime(2017, 5, 3)
                 },
                 new InventTable()
                 {
-                    Id = "3",
-                    Name = "Monitor"
+                    Id = "cccc",
+                    Name = "Monitor",
+                    ModifiedDate = new DateTime(2019, 10, 24)
                 },
                 new InventTable()
                 {
-                    Id = "4",
-                    Name = "Krzeslo"
+                    Id = "dddd",
+                    Name = "Krzeslo",
+                    ModifiedDate = new DateTime(2014, 5, 2)
                 }
             };
 
@@ -47,23 +51,27 @@ namespace Trade.Data
             {
                 new TradeObject()
                 {
-                    Id = "1",
-                    Name = "Biurko"
+                    Id = "aaaa",
+                    Name = "Biurko",
+                    ModifiedDate = new DateTime(2014, 9, 4)
                 },
                 new TradeObject()
                 {
-                    Id = "2",
-                    Name = "Szafa"
+                    Id = "bbbb",
+                    Name = "Szafa",
+                    ModifiedDate = new DateTime(2017, 5, 3)
                 },
                 new TradeObject()
                 {
-                    Id = "3",
-                    Name = "Monitor"
+                    Id = "cccc",
+                    Name = "Monitor",
+                    ModifiedDate = new DateTime(2019, 10, 24)
                 },
                 new TradeObject()
                 {
-                    Id = "4",
-                    Name = "Krzeslo"
+                    Id = "dddd",
+                    Name = "Krzeslo",
+                    ModifiedDate = new DateTime(2014, 5, 2)
                 }
             };
 

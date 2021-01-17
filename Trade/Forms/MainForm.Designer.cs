@@ -37,27 +37,27 @@ namespace Trade.Forms
             this.btnModify = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.dgvInventTable = new System.Windows.Forms.DataGridView();
+            this.colIdInvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNameInvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModifyInvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsInventTable = new System.Windows.Forms.BindingSource(this.components);
             this.dgvTradeObject = new System.Windows.Forms.DataGridView();
+            this.colIdTrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNameTrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModifyTrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsTradeObject = new System.Windows.Forms.BindingSource(this.components);
             this.rtInventTable = new System.Windows.Forms.RichTextBox();
             this.ssTrade = new System.Windows.Forms.StatusStrip();
             this.tsslVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslDatabase = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
-            this.colIdInvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameInvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colModifyInvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsInventTable = new System.Windows.Forms.BindingSource(this.components);
-            this.colIdTrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameTrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colModifyTrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsTradeObject = new System.Windows.Forms.BindingSource(this.components);
             this.tlpTrade.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTradeObject)).BeginInit();
-            this.ssTrade.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsInventTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTradeObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTradeObject)).BeginInit();
+            this.ssTrade.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpTrade
@@ -164,6 +164,32 @@ namespace Trade.Forms
             this.dgvInventTable.Size = new System.Drawing.Size(401, 444);
             this.dgvInventTable.TabIndex = 1;
             // 
+            // colIdInvent
+            // 
+            this.colIdInvent.DataPropertyName = "Id";
+            this.colIdInvent.HeaderText = "Id";
+            this.colIdInvent.Name = "colIdInvent";
+            this.colIdInvent.ReadOnly = true;
+            // 
+            // colNameInvent
+            // 
+            this.colNameInvent.DataPropertyName = "Name";
+            this.colNameInvent.HeaderText = "Name";
+            this.colNameInvent.Name = "colNameInvent";
+            this.colNameInvent.ReadOnly = true;
+            // 
+            // colModifyInvent
+            // 
+            this.colModifyInvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colModifyInvent.DataPropertyName = "ModifiedDate";
+            this.colModifyInvent.HeaderText = "ModifiedDate";
+            this.colModifyInvent.Name = "colModifyInvent";
+            this.colModifyInvent.ReadOnly = true;
+            // 
+            // bsInventTable
+            // 
+            this.bsInventTable.DataSource = typeof(Trade.Models.InventTable);
+            // 
             // dgvTradeObject
             // 
             this.dgvTradeObject.AllowUserToAddRows = false;
@@ -184,13 +210,38 @@ namespace Trade.Forms
             this.dgvTradeObject.Size = new System.Drawing.Size(401, 444);
             this.dgvTradeObject.TabIndex = 2;
             // 
+            // colIdTrade
+            // 
+            this.colIdTrade.DataPropertyName = "Id";
+            this.colIdTrade.HeaderText = "Id";
+            this.colIdTrade.Name = "colIdTrade";
+            this.colIdTrade.ReadOnly = true;
+            // 
+            // colNameTrade
+            // 
+            this.colNameTrade.DataPropertyName = "Name";
+            this.colNameTrade.HeaderText = "Name";
+            this.colNameTrade.Name = "colNameTrade";
+            this.colNameTrade.ReadOnly = true;
+            // 
+            // colModifyTrade
+            // 
+            this.colModifyTrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colModifyTrade.DataPropertyName = "ModifiedDate";
+            this.colModifyTrade.HeaderText = "ModifiedDate";
+            this.colModifyTrade.Name = "colModifyTrade";
+            this.colModifyTrade.ReadOnly = true;
+            // 
+            // bsTradeObject
+            // 
+            this.bsTradeObject.DataSource = typeof(Trade.Models.TradeObject);
+            // 
             // rtInventTable
             // 
             this.tlpTrade.SetColumnSpan(this.rtInventTable, 2);
-            this.rtInventTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtInventTable.Location = new System.Drawing.Point(3, 493);
             this.rtInventTable.Name = "rtInventTable";
-            this.rtInventTable.Size = new System.Drawing.Size(808, 144);
+            this.rtInventTable.Size = new System.Drawing.Size(808, 122);
             this.rtInventTable.TabIndex = 3;
             this.rtInventTable.Text = "";
             // 
@@ -224,58 +275,6 @@ namespace Trade.Forms
             this.tsslUser.Size = new System.Drawing.Size(96, 17);
             this.tsslUser.Text = "Użytkownik: root";
             // 
-            // colIdInvent
-            // 
-            this.colIdInvent.DataPropertyName = "Id";
-            this.colIdInvent.HeaderText = "Id";
-            this.colIdInvent.Name = "colIdInvent";
-            this.colIdInvent.ReadOnly = true;
-            // 
-            // colNameInvent
-            // 
-            this.colNameInvent.DataPropertyName = "Name";
-            this.colNameInvent.HeaderText = "Name";
-            this.colNameInvent.Name = "colNameInvent";
-            this.colNameInvent.ReadOnly = true;
-            // 
-            // colModifyInvent
-            // 
-            this.colModifyInvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colModifyInvent.DataPropertyName = "ModifiedDate";
-            this.colModifyInvent.HeaderText = "ModifiedDate";
-            this.colModifyInvent.Name = "colModifyInvent";
-            this.colModifyInvent.ReadOnly = true;
-            // 
-            // bsInventTable
-            // 
-            this.bsInventTable.DataSource = typeof(Trade.Models.InventTable);
-            // 
-            // colIdTrade
-            // 
-            this.colIdTrade.DataPropertyName = "Id";
-            this.colIdTrade.HeaderText = "Id";
-            this.colIdTrade.Name = "colIdTrade";
-            this.colIdTrade.ReadOnly = true;
-            // 
-            // colNameTrade
-            // 
-            this.colNameTrade.DataPropertyName = "Name";
-            this.colNameTrade.HeaderText = "Name";
-            this.colNameTrade.Name = "colNameTrade";
-            this.colNameTrade.ReadOnly = true;
-            // 
-            // colModifyTrade
-            // 
-            this.colModifyTrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colModifyTrade.DataPropertyName = "ModifiedDate";
-            this.colModifyTrade.HeaderText = "ModifiedDate";
-            this.colModifyTrade.Name = "colModifyTrade";
-            this.colModifyTrade.ReadOnly = true;
-            // 
-            // bsTradeObject
-            // 
-            this.bsTradeObject.DataSource = typeof(Trade.Models.TradeObject);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,11 +291,11 @@ namespace Trade.Forms
             this.tlpTrade.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsInventTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTradeObject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTradeObject)).EndInit();
             this.ssTrade.ResumeLayout(false);
             this.ssTrade.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsInventTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsTradeObject)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
