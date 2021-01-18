@@ -7,7 +7,7 @@ using Trade.Models;
 
 namespace Trade.Data
 {
-    static class TradeContext
+    class TradeContext
     {
 
         static TradeContext()

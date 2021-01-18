@@ -125,9 +125,12 @@ namespace Trade.Forms
         {
             var syncTables = new SynchronizeInventTableWithTradeObject();
 
-            syncTables.AddRecodrs();
-            syncTables.DeleteRecords();
-            syncTables.ModifyObjects();
+            var syncResult = syncTables.Synchronize();
+
+            if (!syncResult)
+            {
+                MessageBox.Show("Synchronizacja się nie powiodła!");
+            }
 
 
             if (rtInventTable.Text.Length > 0)

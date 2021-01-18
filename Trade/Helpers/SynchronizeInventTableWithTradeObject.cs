@@ -25,8 +25,26 @@ namespace Trade.Helpers
       
         }
 
+        public bool Synchronize()
+        {
+            try
+            {
+                AddRecodrs();
+                DeleteRecords();
+                ModifyObjects();
+            }
+            catch (Exception)
+            {
 
-        public void AddRecodrs()
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        private void AddRecodrs()
         {
             var inventTableItemsId = _inventTables
                                 .Select(x => x.Id)
@@ -36,22 +54,19 @@ namespace Trade.Helpers
 
             if (inventTableItemsId != null)
             {
-                List<InventTable> inventTableItems = new List<InventTable>();
 
                 foreach (var itemId in inventTableItemsId)
-                {
-                    inventTableItems.Add(_inventTables
-                                            .Where(x => x.Id == itemId)
-                                            .FirstOrDefault());
-                }
+                { 
 
-                foreach (var item in inventTableItems)
-                {
+                    var inventTableItem = _inventTables
+                                            .Where(x => x.Id == itemId)
+                                            .FirstOrDefault();
+
                     var tradeObject = new TradeObject()
                     {
-                        Id = item.Id,
-                        Name = item.Name,
-                        ModifiedDate = item.ModifiedDate
+                        Id = inventTableItem.Id,
+                        Name = inventTableItem.Name,
+                        ModifiedDate = inventTableItem.ModifiedDate
                     };
 
                     TradeContext.tradeObjects.Add(tradeObject);
@@ -59,12 +74,16 @@ namespace Trade.Helpers
                     sbuilder.Append($"Dodano obiekt o nazwie: {tradeObject.Name} " + "\n");
 
                 }
-                sbuilder.Append($"Łącznie dodano: {inventTableItems.Count} " + "\n");
+
+                sbuilder.Append($"Łącznie dodano: {inventTableItemsId.Count} " + "\n");
+
+
             }
+
 
         }
 
-        public void DeleteRecords()
+        private void DeleteRecords()
         {
             var tradeObjectsItemsId = _tradeObjects
                                 .Select(x => x.Id)
@@ -74,26 +93,24 @@ namespace Trade.Helpers
 
             if (tradeObjectsItemsId != null)
             {
-                List<TradeObject> tradeObjectsItems = new List<TradeObject>();
 
                 foreach (var itemId in tradeObjectsItemsId)
                 {
-                    tradeObjectsItems.Add(_tradeObjects
+                    var tradeObjectItem = _tradeObjects
                                             .Where(x => x.Id == itemId)
-                                            .FirstOrDefault());
+                                            .FirstOrDefault();
+
+                    TradeContext.tradeObjects.Remove(tradeObjectItem);
+
+                    sbuilder.Append($"Usunięto obiekt o nazwie: {tradeObjectItem.Name} " + "\n");
+
                 }
 
-                foreach (var item in tradeObjectsItems)
-                {
-                    TradeContext.tradeObjects.Remove(item);
-
-                    sbuilder.Append($"Usunięto obiekt o nazwie: {item.Name} " + "\n");
-                }
-                sbuilder.Append($"Łącznie usunięto: {tradeObjectsItems.Count} " + "\n");
+                sbuilder.Append($"Łącznie usunięto: {tradeObjectsItemsId.Count} " + "\n");
             }
         }
 
-        public void ModifyObjects()
+        private void ModifyObjects()
         {
             if (modifyObjects.Count != 0)
             {
