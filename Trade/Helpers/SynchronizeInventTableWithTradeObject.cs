@@ -10,7 +10,7 @@ namespace Trade.Helpers
 {
     class SynchronizeInventTableWithTradeObject
     {
-        public static List<InventTable> modifyObjects = new List<InventTable>();
+        public static List<InventTable> modifiedObjects = new List<InventTable>();
         public StringBuilder sbuilder;
 
         private readonly List<InventTable> _inventTables;
@@ -112,9 +112,9 @@ namespace Trade.Helpers
 
         private void ModifyObjects()
         {
-            if (modifyObjects.Count != 0)
+            if (modifiedObjects.Count != 0)
             {
-                foreach (var item in modifyObjects)
+                foreach (var item in modifiedObjects)
                 {
                     var itemToModify = TradeContext.tradeObjects
                                         .Where(x => x.Id == item.Id)
@@ -123,14 +123,15 @@ namespace Trade.Helpers
                     if (itemToModify != null)
                     {
                         itemToModify.Name = item.Name;
+                        itemToModify.ModifiedDate = item.ModifiedDate;
 
                         sbuilder.Append($"Zmodyfikowano obiekt o nazwie: {item.Name} " + "\n");
                     }     
                 }
 
-                sbuilder.Append($"Łącznie zmodyfikowano: {modifyObjects.Count} " + "\n");
+                sbuilder.Append($"Łącznie zmodyfikowano: {modifiedObjects.Count} " + "\n");
 
-                modifyObjects.Clear();
+                modifiedObjects.Clear();
             }
 
         }
