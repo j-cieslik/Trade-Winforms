@@ -10,7 +10,7 @@ namespace Trade.Helpers
 {
     class SynchronizeInventTableWithTradeObject
     {
-        public static List<InventTable> modifiedObjects = new List<InventTable>();
+        private readonly static List<InventTable> modifiedObjects = new List<InventTable>();
         public StringBuilder sbuilder;
 
         private readonly List<InventTable> _inventTables;
@@ -29,9 +29,9 @@ namespace Trade.Helpers
         {
             try
             {
-                AddRecodrs();
-                DeleteRecords();
-                ModifyObjects();
+                AddRecodrsToTradeObject();
+                DeleteRecordsFromTradeObject();
+                ModifyRecodrsInTradeObject();
             }
             catch (Exception)
             {
@@ -43,8 +43,13 @@ namespace Trade.Helpers
             return true;
         }
 
+        public static void ListOfModifiedInventTableObj(InventTable modifiedInventTable)
+        {
+            modifiedObjects.Add(modifiedInventTable);
+        }
 
-        private void AddRecodrs()
+
+        private void AddRecodrsToTradeObject()
         {
             var inventTableItemsId = _inventTables
                                 .Select(x => x.Id)
@@ -79,7 +84,7 @@ namespace Trade.Helpers
             }
         }
 
-        private void DeleteRecords()
+        private void DeleteRecordsFromTradeObject()
         {
             var tradeObjectsItemsId = _tradeObjects
                                 .Select(x => x.Id)
@@ -106,7 +111,7 @@ namespace Trade.Helpers
             }
         }
 
-        private void ModifyObjects()
+        private void ModifyRecodrsInTradeObject()
         {
             if (modifiedObjects.Count != 0)
             {

@@ -93,7 +93,11 @@ namespace Trade.Forms.InventTables
 
                 ReloadInventTables?.Invoke(btnSave, new InventTableEventArgs(inventTable));
 
-                SynchronizeInventTableWithTradeObject.modifiedObjects.Add(inventTable);
+                if (inventTable != null)
+                {
+                    SynchronizeInventTableWithTradeObject.ListOfModifiedInventTableObj(inventTable);
+                }
+
 
                 Close();
             }
