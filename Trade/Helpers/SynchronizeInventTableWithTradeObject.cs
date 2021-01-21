@@ -76,11 +76,7 @@ namespace Trade.Helpers
                 }
 
                 sbuilder.Append($"Łącznie dodano: {inventTableItemsId.Count} " + "\n");
-
-
             }
-
-
         }
 
         private void DeleteRecords()
@@ -116,7 +112,7 @@ namespace Trade.Helpers
             {
                 foreach (var item in modifiedObjects)
                 {
-                    var itemToModify = TradeContext.tradeObjects
+                    var itemToModify = _tradeObjects
                                         .Where(x => x.Id == item.Id)
                                         .FirstOrDefault();
 
@@ -135,5 +131,6 @@ namespace Trade.Helpers
             }
 
         }
+
     }
 }

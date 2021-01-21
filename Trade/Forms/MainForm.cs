@@ -27,12 +27,12 @@ namespace Trade.Forms
 
         private void PrepareEmployeesData()
         {
-            var fakeInventTablesSorted = TradeContext.GetInventTables().ToList();
-            bsInventTable.DataSource = new BindingList<InventTable>(fakeInventTablesSorted);
+            var fakeInventTables = TradeContext.GetInventTables().ToList();
+            bsInventTable.DataSource = new BindingList<InventTable>(fakeInventTables);
             dgvInventTable.DataSource = bsInventTable;
 
-            var fakeTradeObjectsSorted = TradeContext.GetTradeObjects().ToList();
-            bsTradeObject.DataSource = new BindingList<TradeObject>(fakeTradeObjectsSorted);
+            var fakeTradeObjects = TradeContext.GetTradeObjects().ToList();
+            bsTradeObject.DataSource = new BindingList<TradeObject>(fakeTradeObjects);
             dgvTradeObject.DataSource = bsTradeObject;
         }
 
