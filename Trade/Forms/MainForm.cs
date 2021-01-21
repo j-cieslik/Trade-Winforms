@@ -21,20 +21,24 @@ namespace Trade.Forms
         public MainForm()
         {
             InitializeComponent();
-            PrepareEmployeesData();
+            PrepareInventTableData();
+            PrepareTradeObjectData();
         }
 
 
-        private void PrepareEmployeesData()
+        private void PrepareInventTableData()
         {
             var fakeInventTables = TradeContext.GetInventTables().ToList();
             bsInventTable.DataSource = new BindingList<InventTable>(fakeInventTables);
             dgvInventTable.DataSource = bsInventTable;
-
+        }
+        private void PrepareTradeObjectData()
+        {
             var fakeTradeObjects = TradeContext.GetTradeObjects().ToList();
             bsTradeObject.DataSource = new BindingList<TradeObject>(fakeTradeObjects);
             dgvTradeObject.DataSource = bsTradeObject;
         }
+
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -61,11 +65,6 @@ namespace Trade.Forms
 
                 }
             };
-
-            
-
-            
-
             frm.ShowDialog();
         }
 
@@ -78,7 +77,7 @@ namespace Trade.Forms
 
             frm.ReloadInventTables += (s, ea) =>
             {
-                InventTableEventArgs eventArgs = ea as InventTableEventArgs;
+                var eventArgs = ea as InventTableEventArgs;
 
                 if (eventArgs != null)
                 {
@@ -110,13 +109,13 @@ namespace Trade.Forms
                 {
                     dgvInventTable.ClearSelection();
 
-                    var rowToSelect = dgvInventTable.Rows[dgvInventTable.Rows.Count - 1];
+                    //var rowToSelect = dgvInventTable.Rows[dgvInventTable.Rows.Count - 1];
+                    var rowToSelect = dgvInventTable.Rows[0];
+
 
                     rowToSelect.Selected = true;
                     this.dgvInventTable.CurrentCell = rowToSelect.Cells[0];
                     this.dgvInventTable.BeginEdit(true);
-
-                    
                 }
             }
         }
@@ -132,7 +131,6 @@ namespace Trade.Forms
                 MessageBox.Show("Synchronizacja się nie powiodła!");
             }
 
-
             if (rtInventTable.Text.Length > 0)
             {
                 rtInventTable.Clear();
@@ -142,7 +140,7 @@ namespace Trade.Forms
 
             syncTables.sbuilder.Clear();
 
-            PrepareEmployeesData();
+            PrepareTradeObjectData();
         }
     }
 }
